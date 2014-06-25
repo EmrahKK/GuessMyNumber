@@ -21,6 +21,7 @@
 		B989CF2E195AE9C8000E7B26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B989CF10195AE9C8000E7B26 /* UIKit.framework */; };
 		B989CF36195AE9C8000E7B26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B989CF34195AE9C8000E7B26 /* InfoPlist.strings */; };
 		B989CF38195AE9C8000E7B26 /* GuessMyNumberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B989CF37195AE9C8000E7B26 /* GuessMyNumberTests.m */; };
+		B989CF44195AF41F000E7B26 /* GuessNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B989CF43195AF41F000E7B26 /* GuessNumberModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		B989CF33195AE9C8000E7B26 /* GuessMyNumberTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GuessMyNumberTests-Info.plist"; sourceTree = "<group>"; };
 		B989CF35195AE9C8000E7B26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B989CF37195AE9C8000E7B26 /* GuessMyNumberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessMyNumberTests.m; sourceTree = "<group>"; };
+		B989CF42195AF41F000E7B26 /* GuessNumberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessNumberModel.h; sourceTree = "<group>"; };
+		B989CF43195AF41F000E7B26 /* GuessNumberModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessNumberModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 		B989CF12195AE9C8000E7B26 /* GuessMyNumber */ = {
 			isa = PBXGroup;
 			children = (
+				B989CF41195AF3FF000E7B26 /* Model */,
 				B989CF1B195AE9C8000E7B26 /* AppDelegate.h */,
 				B989CF1C195AE9C8000E7B26 /* AppDelegate.m */,
 				B989CF1E195AE9C8000E7B26 /* Main.storyboard */,
@@ -150,6 +154,15 @@
 				B989CF34195AE9C8000E7B26 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B989CF41195AF3FF000E7B26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B989CF42195AF41F000E7B26 /* GuessNumberModel.h */,
+				B989CF43195AF41F000E7B26 /* GuessNumberModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +264,7 @@
 			files = (
 				B989CF23195AE9C8000E7B26 /* ViewController.m in Sources */,
 				B989CF1D195AE9C8000E7B26 /* AppDelegate.m in Sources */,
+				B989CF44195AF41F000E7B26 /* GuessNumberModel.m in Sources */,
 				B989CF19195AE9C8000E7B26 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
