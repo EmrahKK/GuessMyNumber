@@ -12,6 +12,7 @@
 @interface GuessNumberModel ()
 
 @property (nonatomic, strong) NSNumber *guessNumber;
+@property (nonatomic, strong) NSArray *guessNumberArr;
 
 @end
 
@@ -27,11 +28,62 @@ static GuessNumberModel *guessNumberModel = nil;    // static instance variable
 }
 
 - (void)beginNewGame {
-    
+    [self generateGuessNumber];
 }
-- (NSString*)guessNumber:(NSNumber*)guess {
+- (NSMutableAttributedString*)guessNumber:(NSString*)guess {
     
-    return @"1234";
+    int pls = 0;
+    int mns = 0;
+    
+    NSMutableArray *numbsArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < guess.length; i ++) {
+        [numbsArr addObject:[NSString stringWithFormat:@"%c", [guess characterAtIndex:i]]];
+    }
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    for (NSString *ch in numbsArr) {
+        for (NSNumber *numb in self.guessNumberArr) {
+            if ([numb isEqualToNumber:[f numberFromString:ch]]) {
+                if ([self.guessNumberArr indexOfObject:numb] == [numbsArr indexOfObject:ch]) {
+                    pls++;
+                } else {
+                    mns++;
+                }
+            }
+        }
+    }
+    
+    NSMutableParagraphStyle *paragrapStyle = NSMutableParagraphStyle.new;
+    paragrapStyle.alignment = NSTextAlignmentCenter;
+    
+    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ : ",guess] attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+    
+    //NSString* result = [NSString stringWithFormat:@"%@ : ",guess];
+    NSMutableAttributedString *plsTxt = [[NSMutableAttributedString alloc] init];
+    NSMutableAttributedString *mnsTxt = [[NSMutableAttributedString alloc] init];
+    NSMutableAttributedString *zeroTxt = [[NSMutableAttributedString alloc] init];
+    
+    if (pls != 0) {
+        plsTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d", pls] attributes:@{NSForegroundColorAttributeName:[UIColor greenColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+        
+        [result appendAttributedString:plsTxt];
+        
+    }
+    if (mns != 0) {
+        mnsTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"-%d", mns] attributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+        
+        [result appendAttributedString:mnsTxt];
+    }
+    
+    if (mns == 0 && pls == 0) {
+        zeroTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d",pls] attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+        
+        [result appendAttributedString:zeroTxt];
+    }
+    
+    return result;
 }
 
 #pragma mark private methods
@@ -41,27 +93,29 @@ static GuessNumberModel *guessNumberModel = nil;    // static instance variable
     NSMutableArray *numbArray = [@[] mutableCopy];
     
     while (numbArray.count<4) {
-        NSNumber *r = [NSNumber numberWithInt:rand() % 10];
+        NSNumber *r = [NSNumber numberWithInt:arc4random() % 10];
         BOOL exist = NO;
         for (NSNumber* numb in numbArray) {
-            if (numb == r || r == 0) {
+            if (numb == r) {
                 exist = YES;
             }
         }
         if (!exist) {
-            [numbArray addObject:r];
+            if ([r intValue] != 0) {
+                [numbArray addObject:r];
+            }
         }
     }
-    NSNumber *composedNumb;
     
+    NSNumber *composedNumb;
     
     for (int i=0; i<numbArray.count; i++) {
         composedNumb = [NSNumber numberWithDouble:[composedNumb intValue] + [numbArray[i] intValue]*pow(10, i)];
     }
     
     [self setGuessNumber:composedNumb];
-    NSLog(@"%@",self.guessNumber);
+    [self setGuessNumberArr:[[numbArray reverseObjectEnumerator] allObjects]];
+    
+    NSLog(@"gen : %@",self.guessNumber);
 }
-
-
 @end

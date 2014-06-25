@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7D9FF1CE-2631-413B-A2E4-3FB655560625</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GuessMyNumber</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>650C5A33-CDED-4150-89FB-57767DF0617E</key>
+		<string>https://github.com/EmrahKK/GuessMyNumber.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GuessMyNumber.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>650C5A33-CDED-4150-89FB-57767DF0617E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/EmrahKK/GuessMyNumber.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>650C5A33-CDED-4150-89FB-57767DF0617E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>650C5A33-CDED-4150-89FB-57767DF0617E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GuessMyNumber</string>
+		</dict>
+	</array>
+</dict>
+</plist>

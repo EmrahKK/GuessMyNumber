@@ -13,7 +13,7 @@
 + (GuessNumberModel *)sharedGuessNumberModel;
 
 - (void)beginNewGame;
-- (NSString*)guessNumber:(NSNumber*)guess;
+- (NSMutableAttributedString*)guessNumber:(NSString*)guess;
 
 
 @end

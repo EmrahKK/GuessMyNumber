@@ -12,7 +12,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *guessTV;
 @property (weak, nonatomic) IBOutlet UITextField *guessTF;
-@property (nonatomic, strong) GuessNumberModel *guessNumberModel;
+
 @end
 
 @implementation ViewController
@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[[GuessNumberModel sharedGuessNumberModel] beginNewGame];
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,8 +31,21 @@
 
 #pragma mark Actions
 - (IBAction)guessTouch:(id)sender {
-    [self.guessNumberModel.sharedGuessNumberModel
-    
+    if ([self checkGuess]) {
+        
+        NSMutableAttributedString *appendTxt = [[NSMutableAttributedString alloc] initWithAttributedString:[[GuessNumberModel sharedGuessNumberModel] guessNumber:self.guessTF.text]];
+        
+        NSMutableAttributedString *origTxt = [self.guessTV.attributedText mutableCopy];
+        
+        NSAttributedString* nl = [[NSAttributedString alloc] initWithString:@"\n" attributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+        
+        [appendTxt appendAttributedString:nl];
+        [appendTxt appendAttributedString:origTxt];
+      
+        self.guessTV.attributedText = appendTxt;
+        self.guessTF.text = @"";
+        [self.guessTF resignFirstResponder];
+    }
 }
 
 #pragma mark Methods
