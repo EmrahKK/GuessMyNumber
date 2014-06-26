@@ -8,7 +8,6 @@
 
 #import "GuessNumberModel.h"
 
-
 @interface GuessNumberModel ()
 
 @property (nonatomic, strong) NSNumber *guessNumber;
@@ -58,7 +57,7 @@ static GuessNumberModel *guessNumberModel = nil;    // static instance variable
     NSMutableParagraphStyle *paragrapStyle = NSMutableParagraphStyle.new;
     paragrapStyle.alignment = NSTextAlignmentCenter;
     
-    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ : ",guess] attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ : ",guess] attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont fontWithName:@"Chalkboard SE" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
     
     //NSString* result = [NSString stringWithFormat:@"%@ : ",guess];
     NSMutableAttributedString *plsTxt = [[NSMutableAttributedString alloc] init];
@@ -66,21 +65,32 @@ static GuessNumberModel *guessNumberModel = nil;    // static instance variable
     NSMutableAttributedString *zeroTxt = [[NSMutableAttributedString alloc] init];
     
     if (pls != 0) {
-        plsTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d", pls] attributes:@{NSForegroundColorAttributeName:[UIColor greenColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+        plsTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"+%d ", pls] attributes:@{NSForegroundColorAttributeName:[UIColor greenColor],NSFontAttributeName:[UIFont fontWithName:@"Chalkboard SE" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
         
         [result appendAttributedString:plsTxt];
         
     }
     if (mns != 0) {
-        mnsTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"-%d", mns] attributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+        mnsTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"-%d ", mns] attributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[UIFont fontWithName:@"Chalkboard SE" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
         
         [result appendAttributedString:mnsTxt];
     }
     
     if (mns == 0 && pls == 0) {
-        zeroTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d",pls] attributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
+        zeroTxt = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d ",pls] attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont fontWithName:@"Chalkboard SE" size:28], NSParagraphStyleAttributeName:paragrapStyle}];
         
         [result appendAttributedString:zeroTxt];
+    }
+    
+    if (result.length < 13) {
+        for (NSUInteger i = result.length; i < 13; i++) {
+            NSAttributedString* sp = [[NSAttributedString alloc] initWithString:@"-" attributes:@{NSForegroundColorAttributeName:[UIColor clearColor],NSFontAttributeName:[UIFont fontWithName:@"Chalkboard SE" size:28]}];
+            [result appendAttributedString:sp];
+        }
+    }
+    
+    if (pls > 3) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NumberFound" object:self];
     }
     
     return result;
