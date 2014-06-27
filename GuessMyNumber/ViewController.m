@@ -19,15 +19,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[[GuessNumberModel sharedGuessNumberModel] beginNewGame];
+	//[[GuessNumberModel sharedGuessNumberModel] beginNewGame];
     [self.guessTF setUserInteractionEnabled:NO];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"NumberFound"
                                                       object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
-        [self performSegueWithIdentifier:@"menuModalSegue" sender:self];
-    }];
+                                                      [self performSegueWithIdentifier:@"gameCompletedUnwindSegue" sender:self];
+                                                  }];
     [self.guessTV setDelegate:self];
 }
 
@@ -93,7 +93,7 @@
     
 }
 
-- (IBAction)beginNewGame:(UIStoryboardSegue *)unwindSegue
+- (void)beginNewGame
 {
     self.guessTV.attributedText = nil;
     [[GuessNumberModel sharedGuessNumberModel] beginNewGame];

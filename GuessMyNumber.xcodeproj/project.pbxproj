@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B93D69C0195D4D29001C8BEA /* RoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B93D69BF195D4D29001C8BEA /* RoundedButton.m */; };
+		B93D69C3195D5834001C8BEA /* HowToPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93D69C2195D5834001C8BEA /* HowToPlayViewController.m */; };
 		B943D766195C3680001F83AF /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B943D765195C3680001F83AF /* MenuViewController.m */; };
 		B989CF0D195AE9C8000E7B26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B989CF0C195AE9C8000E7B26 /* Foundation.framework */; };
 		B989CF0F195AE9C8000E7B26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B989CF0E195AE9C8000E7B26 /* CoreGraphics.framework */; };
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B93D69BE195D4D29001C8BEA /* RoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedButton.h; sourceTree = "<group>"; };
+		B93D69BF195D4D29001C8BEA /* RoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedButton.m; sourceTree = "<group>"; };
+		B93D69C1195D5834001C8BEA /* HowToPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToPlayViewController.h; sourceTree = "<group>"; };
+		B93D69C2195D5834001C8BEA /* HowToPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPlayViewController.m; sourceTree = "<group>"; };
 		B943D764195C3680001F83AF /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		B943D765195C3680001F83AF /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		B989CF09195AE9C8000E7B26 /* GuessMyNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessMyNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,11 +91,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B93D69BD195D4CFE001C8BEA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B93D69BE195D4D29001C8BEA /* RoundedButton.h */,
+				B93D69BF195D4D29001C8BEA /* RoundedButton.m */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		B943D763195C3664001F83AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				B943D764195C3680001F83AF /* MenuViewController.h */,
 				B943D765195C3680001F83AF /* MenuViewController.m */,
+				B93D69C1195D5834001C8BEA /* HowToPlayViewController.h */,
+				B93D69C2195D5834001C8BEA /* HowToPlayViewController.m */,
+				B989CF21195AE9C8000E7B26 /* ViewController.h */,
+				B989CF22195AE9C8000E7B26 /* ViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -127,13 +146,12 @@
 		B989CF12195AE9C8000E7B26 /* GuessMyNumber */ = {
 			isa = PBXGroup;
 			children = (
+				B93D69BD195D4CFE001C8BEA /* Components */,
 				B943D763195C3664001F83AF /* Controller */,
 				B989CF41195AF3FF000E7B26 /* Model */,
 				B989CF1B195AE9C8000E7B26 /* AppDelegate.h */,
 				B989CF1C195AE9C8000E7B26 /* AppDelegate.m */,
 				B989CF1E195AE9C8000E7B26 /* Main.storyboard */,
-				B989CF21195AE9C8000E7B26 /* ViewController.h */,
-				B989CF22195AE9C8000E7B26 /* ViewController.m */,
 				B989CF24195AE9C8000E7B26 /* Images.xcassets */,
 				B989CF13195AE9C8000E7B26 /* Supporting Files */,
 			);
@@ -276,10 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B989CF23195AE9C8000E7B26 /* ViewController.m in Sources */,
+				B93D69C3195D5834001C8BEA /* HowToPlayViewController.m in Sources */,
 				B989CF1D195AE9C8000E7B26 /* AppDelegate.m in Sources */,
 				B989CF44195AF41F000E7B26 /* GuessNumberModel.m in Sources */,
 				B989CF19195AE9C8000E7B26 /* main.m in Sources */,
 				B943D766195C3680001F83AF /* MenuViewController.m in Sources */,
+				B93D69C0195D4D29001C8BEA /* RoundedButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +427,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GuessMyNumber/GuessMyNumber-Prefix.pch";
 				INFOPLIST_FILE = "GuessMyNumber/GuessMyNumber-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -420,7 +442,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GuessMyNumber/GuessMyNumber-Prefix.pch";
 				INFOPLIST_FILE = "GuessMyNumber/GuessMyNumber-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

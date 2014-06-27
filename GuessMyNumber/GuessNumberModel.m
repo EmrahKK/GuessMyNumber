@@ -10,8 +10,9 @@
 
 @interface GuessNumberModel ()
 
-@property (nonatomic, strong) NSNumber *guessNumber;
+
 @property (nonatomic, strong) NSArray *guessNumberArr;
+
 
 @end
 
@@ -28,6 +29,7 @@ static GuessNumberModel *guessNumberModel = nil;    // static instance variable
 
 - (void)beginNewGame {
     [self generateGuessNumber];
+    [self setGuessCount:1];
 }
 - (NSMutableAttributedString*)guessNumber:(NSString*)guess {
     
@@ -92,6 +94,8 @@ static GuessNumberModel *guessNumberModel = nil;    // static instance variable
     if (pls > 3) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NumberFound" object:self];
     }
+    
+    self.guessCount++;
     
     return result;
 }

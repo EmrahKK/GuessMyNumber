@@ -7,8 +7,11 @@
 //
 
 #import "MenuViewController.h"
+#import "GuessNumberModel.h"
+#import "ViewController.h"
 
 @interface MenuViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
 @end
 
@@ -26,34 +29,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark Actions
 
-- (IBAction)newGameTouch:(UIButton *)sender {
-    
-}
-
-- (IBAction)howToPlayTouch:(UIButton *)sender {
-    
-}
-
-/*
-#pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[ViewController class]]) {
+        ViewController *mvc = (ViewController *)segue.destinationViewController;
+        [mvc beginNewGame];
+    }
+
 }
-*/
+
+- (IBAction)doneHowToplay:(UIStoryboardSegue*)sender {
+    [self.resultLabel setText:@""];
+}
+
+- (IBAction)gameCompleted:(UIStoryboardSegue*)sender {
+    NSString* try;
+    if ([[GuessNumberModel sharedGuessNumberModel] guessCount] < 2) {
+        try = @"try";
+    } else {
+        try = @"tries";
+    }
+
+    [self.resultLabel setText:[NSString stringWithFormat:@"Congratulation you have guessed the number : %@ within %d %@",[[GuessNumberModel sharedGuessNumberModel] guessNumber],[[GuessNumberModel sharedGuessNumberModel] guessCount],try]];
+}
 
 @end

@@ -10,6 +10,9 @@
 
 @interface GuessNumberModel : NSObject
 
+@property (nonatomic, strong) NSNumber *guessNumber;
+@property (nonatomic) int guessCount;
+
 + (GuessNumberModel *)sharedGuessNumberModel;
 
 - (void)beginNewGame;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z9Q-MZ-QDB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -294,12 +294,13 @@
                         <outletCollection property="numberButtons" destination="DkJ-pS-JlU" id="YBs-8t-Bdj"/>
                         <outletCollection property="numberButtons" destination="ere-O9-gFw" id="plN-AE-7xx"/>
                         <outletCollection property="numberButtons" destination="QSN-8V-vEF" id="hJM-gf-m5z"/>
-                        <segue destination="Z9Q-MZ-QDB" kind="modal" identifier="menuModalSegue" id="lFa-Ch-1gR"/>
+                        <segue destination="dIZ-IH-ZhG" kind="unwind" identifier="gameCompletedUnwindSegue" unwindAction="gameCompleted:" id="NQ8-Dy-QqY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="dIZ-IH-ZhG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="424" y="134"/>
+            <point key="canvasLocation" x="973" y="-259"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="nJf-ag-EdT">
@@ -314,62 +315,127 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xi-vv-7Fj">
-                                <rect key="frame" x="20" y="187" width="280" height="42"/>
+                                <rect key="frame" x="20" y="205" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.48999999999999999" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="MaY-B9-syK"/>
+                                    <constraint firstAttribute="height" constant="42" id="Fkk-L8-JFh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" red="0.090703154140000006" green="0.76281489160000004" blue="0.58436553970000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="guessTouch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kR4-oT-1Se"/>
-                                    <action selector="newGameTouch:" destination="Z9Q-MZ-QDB" eventType="touchUpInside" id="Z5f-SD-G5n"/>
-                                    <segue destination="Wcw-sE-3kG" kind="unwind" unwindAction="beginNewGame:" id="4kq-4h-O5q"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="BeginNewGameModalSegue" id="pVu-rh-Jn7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utn-eL-NEy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utn-eL-NEy">
                                 <rect key="frame" x="20" y="263" width="280" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.48999999999999999" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="uoa-Ph-jjQ"/>
+                                    <constraint firstAttribute="height" constant="42" id="Mee-mv-Mw7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
                                 <state key="normal" title="How to Play">
                                     <color key="titleColor" red="0.090703154140000006" green="0.76281489160000004" blue="0.58436553970000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="guessTouch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YOS-dA-eEV"/>
-                                    <action selector="howToPlayTouch:" destination="Z9Q-MZ-QDB" eventType="touchUpInside" id="hhk-dG-Lvk"/>
+                                    <segue destination="esC-YK-k1w" kind="modal" identifier="HowToPlayModalSegue" id="BmB-6e-AcV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-fY-Pli">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-fY-Pli">
                                 <rect key="frame" x="20" y="20" width="280" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="159" id="JKa-6u-bPQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                <color key="textColor" red="0.090703154140000006" green="0.76281489160000004" blue="0.58436553970000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="utn-eL-NEy" secondAttribute="trailing" constant="20" id="3XT-nv-lSX"/>
-                            <constraint firstItem="utn-eL-NEy" firstAttribute="top" secondItem="1Xi-vv-7Fj" secondAttribute="bottom" constant="34" id="7Sd-Ud-CFH"/>
-                            <constraint firstAttribute="centerY" secondItem="utn-eL-NEy" secondAttribute="centerY" id="Avm-GP-BSC"/>
-                            <constraint firstAttribute="centerX" secondItem="utn-eL-NEy" secondAttribute="centerX" id="JJp-g7-6pu"/>
-                            <constraint firstItem="utn-eL-NEy" firstAttribute="leading" secondItem="wtg-VZ-WDL" secondAttribute="leading" constant="20" id="JXc-2g-a2f"/>
-                            <constraint firstItem="1Xi-vv-7Fj" firstAttribute="leading" secondItem="wtg-VZ-WDL" secondAttribute="leading" constant="20" id="a0r-2Y-js5"/>
-                            <constraint firstAttribute="trailing" secondItem="1Xi-vv-7Fj" secondAttribute="trailing" constant="20" id="rP3-VO-XdI"/>
+                            <constraint firstAttribute="trailing" secondItem="IfF-fY-Pli" secondAttribute="trailing" constant="20" id="0N9-xR-jne"/>
+                            <constraint firstItem="1Xi-vv-7Fj" firstAttribute="top" secondItem="IfF-fY-Pli" secondAttribute="bottom" constant="26" id="4Bj-Kc-2SY"/>
+                            <constraint firstItem="utn-eL-NEy" firstAttribute="top" secondItem="1Xi-vv-7Fj" secondAttribute="bottom" constant="16" id="MPZ-CO-ZYB"/>
+                            <constraint firstAttribute="trailing" secondItem="utn-eL-NEy" secondAttribute="trailing" constant="20" id="OB1-h6-GXn"/>
+                            <constraint firstItem="IfF-fY-Pli" firstAttribute="top" secondItem="QDN-Vu-ROT" secondAttribute="bottom" id="bBx-8U-gS8"/>
+                            <constraint firstItem="1Xi-vv-7Fj" firstAttribute="leading" secondItem="wtg-VZ-WDL" secondAttribute="leading" constant="20" id="cfx-0B-M0U"/>
+                            <constraint firstItem="utn-eL-NEy" firstAttribute="leading" secondItem="wtg-VZ-WDL" secondAttribute="leading" constant="20" id="hbD-an-f9O"/>
+                            <constraint firstItem="IfF-fY-Pli" firstAttribute="leading" secondItem="wtg-VZ-WDL" secondAttribute="leading" constant="20" id="k4z-cp-shF"/>
+                            <constraint firstAttribute="trailing" secondItem="1Xi-vv-7Fj" secondAttribute="trailing" constant="20" id="vmg-FT-eES"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="IfF-fY-Pli" id="o6B-Ek-wha"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bky-sa-GAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="132"/>
+        </scene>
+        <!--How To Play View Controller-->
+        <scene sceneID="W8p-wX-NhX">
+            <objects>
+                <viewController id="esC-YK-k1w" customClass="HowToPlayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Mq-bt-KhG"/>
+                        <viewControllerLayoutGuide type="bottom" id="5F3-jm-tqm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yE7-I9-6dR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3t-LL-cxk">
+                                <rect key="frame" x="20" y="504" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.48999999999999999" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="43R-w3-NlF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.090703154140000006" green="0.76281489160000004" blue="0.58436553970000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="U9i-kt-5Kk" kind="unwind" unwindAction="doneHowToplay:" id="dho-eu-bdn"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iW-NC-hOh">
+                                <rect key="frame" x="20" y="20" width="280" height="476"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">You are trying to find a 4 digit number which have no 0 in it and have no repeating numeral.
+
+Let say the number you are trying to find is 2674. When you make a guess like 1234 game responds; 
+
+1234 : +1 -1
+
++1 means that one numeral is matched and it's in correct digit. In our example it is numeral "4".
+
+-1 means that one numeral is matched but it's in wrong digit. In our example it is numeral "2".</string>
+                                <color key="textColor" red="0.090703154140000006" green="0.76281489160000004" blue="0.58436553970000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7iW-NC-hOh" firstAttribute="leading" secondItem="yE7-I9-6dR" secondAttribute="leading" constant="20" id="4KA-Rq-IfC"/>
+                            <constraint firstItem="7iW-NC-hOh" firstAttribute="top" secondItem="yE7-I9-6dR" secondAttribute="top" constant="20" id="82A-Tw-QuZ"/>
+                            <constraint firstAttribute="trailing" secondItem="7iW-NC-hOh" secondAttribute="trailing" constant="20" id="NPJ-pJ-e8S"/>
+                            <constraint firstItem="v3t-LL-cxk" firstAttribute="leading" secondItem="yE7-I9-6dR" secondAttribute="leading" constant="20" id="WOk-qg-UwC"/>
+                            <constraint firstAttribute="bottom" secondItem="7iW-NC-hOh" secondAttribute="bottom" constant="72" id="ZdC-sd-uQA"/>
+                            <constraint firstAttribute="trailing" secondItem="v3t-LL-cxk" secondAttribute="trailing" constant="20" id="g7G-S8-IS6"/>
+                            <constraint firstItem="5F3-jm-tqm" firstAttribute="top" secondItem="v3t-LL-cxk" secondAttribute="bottom" constant="20" id="qGv-Uc-wB6"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bky-sa-GAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Wcw-sE-3kG" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phT-4Y-uo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="U9i-kt-5Kk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="922" y="134"/>
+            <point key="canvasLocation" x="972" y="422"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
